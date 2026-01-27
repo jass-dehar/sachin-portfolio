@@ -1,0 +1,45 @@
+<div class="scrolling-container">
+  <div class="scrolling-text" id="scrollingText">•&nbsp;&nbsp; Every Frame Matters</div>
+</div>
+
+<style>
+  .scrolling-container {
+    width: 100%; /* Full-screen width */
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    background: black;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .scrolling-text {
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    animation: scrollText 14s linear infinite;
+  }
+
+  @keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let text = document.getElementById("scrollingText");
+    let repeatText = text.innerHTML + "&nbsp;&nbsp;&nbsp;&nbsp;";
+
+    // Duplicate the text dynamically to ensure seamless scrolling
+    while (text.scrollWidth < window.innerWidth * 2) {
+      text.innerHTML += " " + repeatText;
+    }
+  });
+</script>
