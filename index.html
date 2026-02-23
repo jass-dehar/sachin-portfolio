@@ -501,6 +501,107 @@
     font-size: 18px;
   }
 }
+/* ================================
+   SKILLS / WHAT WE BRING SECTION
+================================= */
+
+.skills-section {
+  padding: 120px 20px;
+  background: #f3efe8;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* IMAGE */
+.skills-image img {
+  width: 100%;
+  border-radius: 28px;
+  display: block;
+}
+
+/* CONTENT */
+.skills-badge {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 6px 16px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.skills-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 58px;
+  font-weight: 500;
+  margin-bottom: 60px;
+}
+
+/* BLOCK */
+.skills-block {
+  margin-bottom: 40px;
+}
+
+.skills-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
+/* LIST */
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 40px;
+  list-style: none;
+}
+
+.skills-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+/* Red Dot */
+.skills-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #d84c2f;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 50px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-title {
+    font-size: 42px;
+  }
+
+  .skills-list {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -649,6 +750,50 @@
 
   </div>
 </section>
+<section class="skills-section">
+
+  <div class="skills-container">
+
+    <!-- LEFT IMAGE -->
+    <div class="skills-image">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop" alt="Working Image">
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="skills-content">
+
+      <div class="skills-badge">SKILLS & SERVICES</div>
+      <h2 class="skills-title">What we bring to the table...</h2>
+
+      <!-- WEB DESIGN -->
+      <div class="skills-block">
+        <h3>Web Design</h3>
+        <ul class="skills-list">
+          <li>Design Systems</li>
+          <li>Website Design</li>
+          <li>Landing Pages</li>
+          <li>User Experience Design</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <!-- BRAND DESIGN -->
+      <div class="skills-block">
+        <h3>Brand Design</h3>
+        <ul class="skills-list">
+          <li>Visual Design</li>
+          <li>Logos & Visual Identity</li>
+          <li>Social Media Graphics</li>
+          <li>Presentation Decks</li>
+          <li>Colors & Typography</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</section>
 
 <script>
   const workSection = document.querySelector('.work-section');
@@ -688,6 +833,24 @@
   });
 
   observer.observe(whySection);
+</script>
+<script>
+const skillsSection = document.querySelector('.skills-section');
+
+const skillsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      skillsSection.style.opacity = "1";
+      skillsSection.style.transform = "translateY(0)";
+    }
+  });
+}, { threshold: 0.2 });
+
+skillsSection.style.opacity = "0";
+skillsSection.style.transform = "translateY(60px)";
+skillsSection.style.transition = "all 1s cubic-bezier(.16,1,.3,1)";
+
+skillsObserver.observe(skillsSection);
 </script>
 
 <script>
