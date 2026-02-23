@@ -600,6 +600,116 @@ hr {
     grid-template-columns: 1fr;
   }
 }
+/* ===============================
+   FINAL FOOTER CTA SECTION
+================================= */
+
+.footer-cta {
+  background: #0f0e0b;
+  color: #e8e6e1;
+  border-radius: 40px;
+  margin: 120px auto 40px;
+  max-width: 1400px;
+  padding: 100px 80px 60px;
+}
+
+/* CONTAINER */
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+/* LEFT */
+.footer-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 40px;
+}
+
+.footer-left em {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.footer-btn {
+  display: inline-block;
+  background: #e8e6e1;
+  color: #111;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.footer-btn:hover {
+  transform: translateY(-4px);
+  opacity: 0.85;
+}
+
+/* RIGHT */
+.footer-right {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-column h4 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.footer-column a {
+  display: block;
+  margin-bottom: 16px;
+  text-decoration: none;
+  color: #a9a7a3;
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  margin-top: 80px;
+  font-size: 14px;
+  color: #888;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 30px;
+}
+
+.footer-bottom span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+
+  .footer-cta {
+    padding: 80px 40px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .footer-right {
+    gap: 60px;
+  }
+
+  .footer-left h2 {
+    font-size: 46px;
+  }
+}
   </style>
 </head>
 <body>
@@ -789,6 +899,51 @@ hr {
       </div>
 
     </div>
+  </div>
+</section>
+<section class="footer-cta">
+
+  <div class="footer-container">
+
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2>
+        Ready to bring your <br>
+        <em>ideas to life?</em>
+      </h2>
+
+      <a href="#" class="footer-btn">Book a Free Call</a>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="footer-right">
+
+      <div class="footer-column">
+        <h4>Work</h4>
+        <a href="#">Adriano</a>
+        <a href="#">Horizon Interiors</a>
+        <a href="#">Urban Wheels</a>
+        <a href="#">Conservation Montgomery</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <a href="#">Email</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="footer-bottom">
+    <p>
+      SITE DESIGN AND DEVELOPMENT BY JULES STUDIO.
+      &nbsp;&nbsp; HEADSHOTS BY <span>VICTOR MALDONADO</span>
+      &nbsp;&nbsp; ILLUSTRATIONS BY <span>CLAUDIA FUENTES</span>
+    </p>
   </div>
 
 </section>
