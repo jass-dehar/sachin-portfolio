@@ -70,6 +70,118 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
     scroll-snap-align: start;
   }
 }
+.contact-section {
+  padding: 80px 60px 40px;
+  color: #fff;
+  background: linear-gradient(135deg, #1a5cff, #0b1fff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle diagonal overlay */
+.contact-section::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 150%;
+  background: rgba(255,255,255,0.05);
+  transform: rotate(25deg);
+}
+
+/* layout */
+.cs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.cs-left h2 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.cs-left p {
+  font-size: 22px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* icons */
+.cs-right {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 20px;
+}
+
+.cs-icon {
+  height: 80px;
+  width: 80px;
+  border: 1px solid rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+.cs-icon:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-5px);
+}
+
+/* bottom */
+.cs-bottom {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.cs-bottom span {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .cs-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cs-left h2 {
+    font-size: 40px;
+  }
+
+  .cs-left p {
+    font-size: 18px;
+  }
+
+  .cs-right {
+    grid-template-columns: repeat(3, 60px);
+  }
+
+  .cs-icon {
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+  }
+
+  .cs-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 </style>
 </head>
 
@@ -106,7 +218,39 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
 
   </div>
 </section>
- 
+
+<section class="contact-section">
+  <div class="cs-container">
+
+    <div class="cs-left">
+      <h2>Let’s have a word?</h2>
+      <p>
+        Got an idea, design challenge, or opportunity?<br>
+        I’m all ears and ready to make it happen
+      </p>
+    </div>
+
+    <div class="cs-right">
+      <a href="#" class="cs-icon">✉️</a>
+      <a href="#" class="cs-icon">in</a>
+      <a href="#" class="cs-icon">𝕏</a>
+      <a href="#" class="cs-icon">◎</a>
+      <a href="#" class="cs-icon">●</a>
+    </div>
+
+  </div>
+
+  <div class="cs-bottom">
+    <p>Designed by <span>Sachin</span></p>
+    <p>© 2026. All rights reserved</p>
+  </div>
+</section>
+
+<script>
+ document.querySelectorAll("video").forEach(video => {
+  video.play().catch(() => {});
+});
+</script>
 
 </body>
 </html>
