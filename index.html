@@ -328,101 +328,75 @@
   color: #000000;
 }
 
-/* PROJECT ITEM */
-.work-item {
+/* GRID */
+.work-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 50px;
-  align-items: center;
-  margin-bottom: 46px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
-.work-item.reverse {
-  grid-template-columns: 1.2fr 1fr;
-}
-
-.work-item.reverse .work-info {
-  order: 2;
-}
-
-.work-item.reverse .work-image {
-  order: 1;
-}
-
-/* TEXT */
-.work-info h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.work-tags {
-  display: flex;
-  gap: 20px;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  opacity: 0.7;
-}
-
-.work-info p {
-  max-width: 420px;
-  line-height: 1.5;
-  color: #000000;
-  margin: 20px 0px;
-}
-
-.work-link {
-  text-decoration: none;
-  font-weight: 500;
-  padding: 14px;
-  border-radius: 2rem;
-  background: #000000;
-  color: #fff;
-  transition: 0.3s ease;
-}
-
-.work-link:hover {
-  opacity: 0.6;
-}
-
-/* IMAGE */
-.work-image {
+/* CARD */
+.work-card {
+  position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 16px;
+  height: 420px;
+  cursor: pointer;
 }
 
-.work-image img {
+/* VIDEO */
+.work-card video {
   width: 100%;
-  display: block;
-  transition: transform 1.5s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
 }
 
-.work-item:hover .work-image img {
-  transform: scale(1.05);
+/* OVERLAY */
+.work-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.work-card h3 {
+  font-family: 'Playfair Display';
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.work-card p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* HOVER EFFECT */
+.work-card:hover video {
+  transform: scale(1.08);
+}
+
+.work-card:hover .overlay {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .work-item,
-  .work-item.reverse {
+  .work-grid {
     grid-template-columns: 1fr;
   }
 
-  .work-info {
-    order: 2 !important;
+  .work-card {
+    height: 320px;
   }
-
-  .work-image {
-    order: 1 !important;
-  }
-
-  .work-title {
-    font-size: 42px;
-  }
-}  
+}
 /* ============================
    LOGO MARQUEE SECTION
 =============================== */
@@ -779,7 +753,7 @@ hr {
     </div>
   </div>
 </section>
-<section class="work-section">
+ 
 <section class="work-section">
   <div class="work-container">
 
@@ -788,43 +762,44 @@ hr {
       <h2 class="work-title">A glimpse of recent projects</h2>
     </div>
 
-    <div class="scroll-stack">
+<div class="work-grid">
 
-      <!-- ITEM -->
-      <div class="stack-item">
-        <div class="media">
-          <video src="video1.mp4" autoplay muted loop playsinline></video>
-        </div>
-        <div class="content">
-          <h3>Luxury Skincare</h3>
-          <p>High-end conversion focused Shopify build.</p>
-        </div>
-      </div>
-
-      <div class="stack-item">
-        <div class="media">
-          <img src="image1.jpg" />
-        </div>
-        <div class="content">
-          <h3>Portfolio Studio</h3>
-          <p>Minimal, bold storytelling experience.</p>
-        </div>
-      </div>
-
-      <div class="stack-item">
-        <div class="media">
-          <video src="video2.mp4" autoplay muted loop playsinline></video>
-        </div>
-        <div class="content">
-          <h3>Ecom Brand</h3>
-          <p>Performance-driven UI/UX.</p>
-        </div>
-      </div>
-
+  <!-- ITEM -->
+  <div class="work-card">
+    <video src="video1.mp4" autoplay muted loop playsinline></video>
+    <div class="overlay">
+      <h3>Luxury Skincare</h3>
+      <p>High-end conversion focused Shopify build.</p>
     </div>
+  </div>
+
+  <div class="work-card">
+    <video src="video2.mp4" autoplay muted loop playsinline></video>
+    <div class="overlay">
+      <h3>Portfolio Studio</h3>
+      <p>Minimal, bold storytelling experience.</p>
+    </div>
+  </div>
+
+  <div class="work-card">
+    <video src="video3.mp4" autoplay muted loop playsinline></video>
+    <div class="overlay">
+      <h3>Ecom Brand</h3>
+      <p>Performance-driven UI/UX.</p>
+    </div>
+  </div>
+
+  <div class="work-card">
+    <video src="video4.mp4" autoplay muted loop playsinline></video>
+    <div class="overlay">
+      <h3>Fashion Store</h3>
+      <p>Clean & modern shopping experience.</p>
+    </div>
+  </div>
+
+</div>
 
   </div>
-</section>
 </section>
 
 <section class="logo-marquee-section">
