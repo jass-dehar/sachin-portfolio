@@ -22,6 +22,54 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
   .hero{flex-direction:column;text-align:center}
  
 }
+.video-grid {
+  padding: 40px 20px;
+  background: #000;
+}
+
+.vg-wrapper {
+  overflow: hidden;
+}
+
+/* DESKTOP GRID */
+.vg-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.vg-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.vg-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* MOBILE CAROUSEL */
+@media (max-width: 768px) {
+  .vg-track {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vg-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vg-item {
+    min-width: 80%;
+    scroll-snap-align: start;
+  }
+}
 </style>
 </head>
 
@@ -38,7 +86,26 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
     <img src="./Assets/sachin-kumar.jpg">
   </div>
 </section>
+<section class="video-grid">
+  <div class="vg-wrapper">
 
+    <div class="vg-track">
+      <div class="vg-item">
+        <video src="video1.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="vg-item">
+        <video src="video2.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="vg-item">
+        <video src="video3.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="vg-item">
+        <video src="video4.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+
+  </div>
+</section>
  
 
 </body>
