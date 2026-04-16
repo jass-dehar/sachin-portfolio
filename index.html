@@ -16,86 +16,11 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
 .hero-title{font-size:72px;font-weight:700}
 .hero-title span{background:linear-gradient(90deg,#7b2ff7,#f107a3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-image img{width:260px;height:260px;border-radius:50%}
-
-/* EXPERIENCE */
-.exp-section{padding:80px 20px}
-.exp-container{max-width:1100px;margin:auto}
-.exp-title{font-size:56px;margin-bottom:40px}
-.exp-grid{display:grid;grid-template-columns:250px 1fr;gap:60px}
-.exp-tabs{border-left:2px solid #ddd}
-.exp-tab{padding:12px 20px;color:#777;cursor:pointer}
-.exp-tab.active{color:#7b2ff7}
-.exp-panel{display:none}
-.exp-panel.active{display:block}
-
-/* WORK */
-.work-section{padding:20px}
-.work-track{display:flex;gap:20px;transition:.5s}
-.work-card{min-width:70%;height:400px;border-radius:18px;overflow:hidden;transform:scale(.9);opacity:.5;transition:.5s}
-.work-card.active{transform:scale(1);opacity:1}
-.work-card video{width:100%;height:100%;object-fit:cover}
-
-/* CONTACT */
-.contact-section{
-  background:#000;
-  color:#fff;
-  padding:100px 40px;
-}
-
-.contact-container{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 2fr;
-  gap:80px;
-}
-
-.contact-title{
-  font-size:80px;
-  font-weight:600;
-}
-
-.contact-text{
-  font-size:22px;
-  line-height:1.6;
-  margin-bottom:40px;
-  color:#ccc;
-}
-
-.contact-btn{
-  display:inline-block;
-  background:#fff;
-  color:#000;
-  padding:14px 28px;
-  border-radius:12px;
-  text-decoration:none;
-  margin-right:20px;
-}
-
-.contact-email{
-  color:#aaa;
-}
-
-.contact-social{
-  margin-top:40px;
-  display:flex;
-  gap:20px;
-}
-
-.contact-social a{
-  border:1px solid #444;
-  padding:10px 18px;
-  border-radius:30px;
-  color:#fff;
-  text-decoration:none;
-}
-
+ 
 /* MOBILE */
-@media(max-width:900px){
+@media(max-width:768px){
   .hero{flex-direction:column;text-align:center}
-  .exp-grid{grid-template-columns:1fr}
-  .contact-container{grid-template-columns:1fr}
-  .contact-title{font-size:50px}
+ 
 }
 </style>
 </head>
@@ -105,93 +30,16 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
 <!-- HERO -->
 <section class="hero">
   <div>
-    <p>Hey, I'm Lucca 👋</p>
-    <h1 class="hero-title"><span>Frontend</span><br>Developer</h1>
-    <p>I'm a frontend developer based in Italy.</p>
+    <p>Hey, I'm Sachin 👋</p>
+    <h1 class="hero-title"><span>Video</span><br>Editor</h1>
+    <p>I'm a video editor based in India</p>
   </div>
   <div class="hero-image">
     <img src="./Assets/sachin-kumar.jpg">
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="exp-section">
-<div class="exp-container">
-<h2 class="exp-title">Experience.</h2>
-
-<div class="exp-grid">
-<div class="exp-tabs">
-<div class="exp-tab active" data-tab="apple">Apple</div>
-<div class="exp-tab" data-tab="microsoft">Microsoft</div>
-</div>
-
-<div>
-<div class="exp-panel active" id="apple">
-<h3>Engineer @ Apple</h3>
-<p>Built interactive apps</p>
-</div>
-
-<div class="exp-panel" id="microsoft">
-<h3>Dev @ Microsoft</h3>
-<p>Worked on dashboards</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- WORK -->
-<section class="work-section">
-<div class="work-track">
-
-<div class="work-card active"><video src="video1.mp4" autoplay muted loop></video></div>
-<div class="work-card"><video src="video2.mp4" autoplay muted loop></video></div>
-
-</div>
-</section>
-
-<!-- 🔥 CONTACT (NEW) -->
-<section class="contact-section">
-
-  <div class="contact-container">
-
-    <!-- LEFT -->
-    <h2 class="contact-title">Contact</h2>
-
-    <!-- RIGHT -->
-    <div>
-      <p class="contact-text">
-        Psst... exciting opportunities, anyone?<br><br>
-        I'm open to new projects, part-time gigs, or a full-time adventure.
-        Just shoot me an email, I'm practically glued to it.
-      </p>
-
-      <a href="#" class="contact-btn">Reach Out →</a>
-      <span class="contact-email">a88.aryan@gmail.com</span>
-
-      <div class="contact-social">
-        <a href="#">LinkedIn</a>
-        <a href="#">Behance</a>
-        <a href="#">Instagram</a>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-<script>
-/* EXPERIENCE SWITCH */
-document.querySelectorAll('.exp-tab').forEach(tab=>{
-  tab.onclick=()=>{
-    document.querySelectorAll('.exp-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.exp-panel').forEach(p=>p.classList.remove('active'));
-
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
-  }
-});
-</script>
+ 
 
 </body>
 </html>
