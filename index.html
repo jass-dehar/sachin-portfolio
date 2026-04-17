@@ -13,7 +13,15 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
 .p {font-style: cursive;}
 
 /* HERO */
-.hero{max-width:1200px;margin:0px auto;padding:60px 40px;background:#fff;border-radius:0;display:flex;justify-content:space-between;align-items:center}
+.hero {
+  width: 100%;
+  margin: 0;
+  padding: 80px 60px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .hero-title{font-size:54px;font-weight:700;line-height: 1}
 .hero-title span{background:linear-gradient(90deg,#7b2ff7,#f107a3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-image img{width:276px;height:318px;border-radius:50%;margin: 20px}
@@ -21,7 +29,6 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
 /* MOBILE */
 @media(max-width:768px){
   .hero{flex-direction:column;text-align:center}
- 
 }
 .video-grid {
   padding: 40px 20px;
@@ -235,6 +242,7 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-inner">
   <div>
     <p>Hey, I'm Sachin 👋</p>
     <h1 class="hero-title"><span>Video</span><br>Editor</h1>
@@ -290,6 +298,7 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
     <p>Designed by <span>Sachin</span></p>
     <p>© 2026. All rights reserved</p>
   </div>
+   </div>
 </section>
 
 <script>
