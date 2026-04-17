@@ -8,6 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
@@ -20,67 +23,96 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
   margin: 0;
   padding: 0;
   min-height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* 🔥 BG IMAGE */
   background: url('./sachin-banner.png') center/cover no-repeat;
   position: relative;
 }
- 
+
+/* ─── VIDEO SWIPER SECTION ─── */
 .video-grid {
-  padding: 40px 20px;
+  padding: 50px 20px;
   background: #fff;
 }
 
-.vg-wrapper {
+.swiper {
+  width: 100%;
+  padding-bottom: 48px !important; /* space for pagination */
+}
+
+.swiper-slide {
+  border-radius: 20px;
   overflow: hidden;
-}
-
-/* DESKTOP GRID */
-.vg-track {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.vg-item {
   position: relative;
-  overflow: hidden;
-  border-radius: 16px;
 }
 
-.vg-item video {
+.swiper-slide video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 20px;
 }
 
-/* MOBILE CAROUSEL */
+/* ─── CUSTOM PAGINATION DOTS ─── */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #bbb;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ─── CUSTOM NAV ARROWS ─── */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+  background: rgba(255,255,255,0.85);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #000;
+  color: #fff;
+}
+
+body.dark .swiper-button-next,
+body.dark .swiper-button-prev {
+  background: rgba(30,30,30,0.85);
+  color: #fff;
+}
+
+body.dark .swiper-pagination-bullet { background: #555; }
+body.dark .swiper-pagination-bullet-active { background: #fff; }
+
+/* ─── MOBILE ─── */
 @media (max-width: 768px) {
-  .hero {
-    min-height: 32vh;
-  }
-  .vg-track {
-    display: flex;
-    overflow-x: auto;
-    gap: 12px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
+  .hero { min-height: 32vh; }
 
-  .vg-track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .vg-item {
-    min-width: 80%;
-    scroll-snap-align: start;
-  }
+  .swiper-button-next,
+  .swiper-button-prev { display: none; }
 }
+
+/* ─── CONTACT ─── */
 .contact-section {
   padding: 80px 60px 40px;
   color: #fff;
@@ -88,8 +120,6 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
   position: relative;
   overflow: hidden;
 }
-
-/* subtle diagonal overlay */
 .contact-section::after {
   content: "";
   position: absolute;
@@ -100,326 +130,190 @@ body{font-family:'Inter',sans-serif;background:#f3efe8;color:#000}
   background: rgba(255,255,255,0.05);
   transform: rotate(25deg);
 }
-
-/* layout */
 .cs-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
 }
+.cs-left h2 { font-size: 64px; margin-bottom: 20px; font-weight: 600; }
+.cs-left p  { font-size: 22px; opacity: 0.8; line-height: 1.6; }
 
-.cs-left h2 {
-  font-size: 64px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.cs-left p {
-  font-size: 22px;
-  opacity: 0.8;
-  line-height: 1.6;
-}
-
-/* icons */
 .cs-right {
   display: grid;
   grid-template-columns: repeat(3, 80px);
   gap: 20px;
 }
-
-/* ICON BASE */
 .cs-icon {
-  height: 80px;
-  width: 80px;
+  height: 80px; width: 80px;
   border: 1px solid rgba(255,255,255,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  border-radius: 12px;
-  color: #fff;
-  text-decoration: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; border-radius: 12px;
+  color: #fff; text-decoration: none;
   backdrop-filter: blur(6px);
   transition: all 0.35s ease;
   position: relative;
 }
-
-/* ✨ IDLE FLOAT (each icon slightly different timing) */
 .cs-icon:nth-child(1) { animation: float1 6s ease-in-out infinite; }
 .cs-icon:nth-child(2) { animation: float2 7s ease-in-out infinite; }
 .cs-icon:nth-child(3) { animation: float3 5.5s ease-in-out infinite; }
 .cs-icon:nth-child(4) { animation: float2 6.5s ease-in-out infinite; }
 .cs-icon:nth-child(5) { animation: float1 7.5s ease-in-out infinite; }
-
-/* floating keyframes */
-@keyframes float1 {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes float2 {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(8px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes float3 {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
-}
-
-/* 🚀 HOVER EFFECT */
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)}  }
+@keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 .cs-icon:hover {
   transform: translateY(-12px) scale(1.05);
   background: rgba(255,255,255,0.2);
   box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
-
-/* ✨ glow pulse */
 .cs-icon::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent);
-  opacity: 0;
-  transition: 0.4s;
+  content:""; position:absolute; inset:0; border-radius:12px;
+  background:radial-gradient(circle, rgba(255,255,255,0.25), transparent);
+  opacity:0; transition:0.4s;
 }
-
-.cs-icon:hover::after {
-  opacity: 1;
-}
-
-/* bottom */
+.cs-icon:hover::after { opacity:1; }
 .cs-bottom {
-  margin-top: 60px;
-  padding-top: 20px;
+  margin-top: 60px; padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.3);
-  display: flex;
-  justify-content: space-between;
-  font-size: 16px;
-  opacity: 0.8;
+  display: flex; justify-content: space-between;
+  font-size: 16px; opacity: 0.8;
 }
+.cs-bottom span { text-decoration: underline; }
 
-.cs-bottom span {
-  text-decoration: underline;
-}
+/* ─── DARK MODE ─── */
+body { transition: background 0.4s ease, color 0.4s ease; }
+body.dark { background: #0e0e0e; color: #fff; }
+body.dark .video-grid { background: #0e0e0e; }
+body.dark .contact-section { background: linear-gradient(135deg, #111, #000); }
+body.dark .theme-toggle { background: #1a1a1a; }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .cs-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cs-left h2 {
-    font-size: 40px;
-  }
-
-  .cs-left p {
-    font-size: 12px;
-  }
-
-  .cs-right {
-    grid-template-columns: repeat(3, 60px);
-  }
-
-  .cs-icon {
-    height: 60px;
-    width: 60px;
-    font-size: 20px;
-  }
-
-  .cs-bottom {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
+/* ─── THEME TOGGLE ─── */
 .theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.4s ease;
-  z-index: 999;
+  position: fixed; top: 20px; right: 20px;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #fff; display: flex;
+  align-items: center; justify-content: center;
+  cursor: pointer; transition: 0.4s ease; z-index: 999;
 }
+.theme-toggle svg { position:absolute; transition:0.4s ease; top:-11px; left:-12px; }
+.sun { opacity:1; transform:rotate(0deg) scale(1); }
+.moon{ opacity:0; transform:rotate(90deg) scale(0.5); }
+body.dark .sun  { opacity:0; transform:rotate(-90deg) scale(0.5); }
+body.dark .moon { opacity:1; transform:rotate(0deg) scale(1); }
 
-.theme-toggle svg {
-  position: absolute;
-  transition: 0.4s ease;
-  top: -11px;
-  left: -12px;
-}
-
-/* default */
-.sun { opacity: 1; transform: rotate(0deg) scale(1); }
-.moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
-
-/* DARK MODE ICON SWITCH */
-body.dark .sun {
-  opacity: 0;
-  transform: rotate(-90deg) scale(0.5);
-}
-
-body.dark .moon {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-body {
-  transition: background 0.4s ease, color 0.4s ease;
-}
-
-/* DARK MODE */
-body.dark {
-  background: #0e0e0e;
-  color: #fff;
-}
-
-/* Sections */
-body.dark .hero {
-  background: #111;
-}
-
-body.dark .video-grid {
-  background: #0e0e0e;
-}
-
-body.dark .contact-section {
-  background: linear-gradient(135deg, #111, #000);
-}
-
-/* toggle button */
-body.dark .theme-toggle {
-  background: #1a1a1a;
-}
-body {
-  transition: all 0.5s ease;
-}
-/* TYPEWRITER */
+/* ─── TYPEWRITER ─── */
 .typewriter {
-  display: inline-block;
-  font-weight: 700;
+  display: inline-block; font-weight: 700;
   background: linear-gradient(90deg,#7b2ff7,#f107a3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  overflow: hidden;
-  white-space: nowrap;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  overflow: hidden; white-space: nowrap;
   border-right: 2px solid #000;
-
   width: 0;
-  animation: typing 2.5s steps(14, end) forwards,
-             blink 0.7s infinite;
+  animation: typing 2.5s steps(14, end) forwards, blink 0.7s infinite;
 }
+@keyframes typing { from{width:0} to{width:100%} }
+@keyframes blink  { 50%{border-color:transparent} }
+body.dark .typewriter { border-right: 2px solid #fff; }
 
-/* typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* cursor blink */
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-/* DARK MODE cursor fix */
-body.dark .typewriter {
-  border-right: 2px solid #fff;
-}
+/* ─── BUTTONS ─── */
 .btn-click {
-    background: #000;
-    color: #fff;
-    padding: 4px 12px;
-    text-decoration: none;
-    border-radius: 0.4rem;
-    margin: 10px;
-    text-transform: uppercase;
-    font-size: 1rem;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  background: #000; color: #fff;
+  padding: 4px 12px; text-decoration: none;
+  border-radius: 0.4rem; margin: 10px;
+  text-transform: uppercase; font-size: 1rem;
+  box-shadow: rgba(17,17,26,0.1) 0px 4px 16px,
+              rgba(17,17,26,0.1) 0px 8px 24px,
+              rgba(17,17,26,0.1) 0px 16px 56px;
 }
-  .nyc-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
+.nyc-btn {
+  display: flex; align-items: center; justify-content: space-evenly;
+}
+
+/* ─── MOBILE CONTACT ─── */
+@media (max-width: 768px) {
+  .cs-container { flex-direction: column; align-items: flex-start; }
+  .cs-left h2  { font-size: 40px; }
+  .cs-left p   { font-size: 12px; }
+  .cs-right    { grid-template-columns: repeat(3, 60px); }
+  .cs-icon     { height: 60px; width: 60px; font-size: 20px; }
+  .cs-bottom   { flex-direction: column; gap: 10px; }
+}
 </style>
 </head>
 
 <body>
+
+<!-- THEME TOGGLE -->
 <div class="theme-toggle" id="themeToggle">
   <span class="sun">
-    <!-- SUN SVG -->
-<?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
   </span>
   <span class="moon">
-    <!-- MOON SVG -->
-<?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
   </span>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
- 
-  </div>
+  <div class="hero-inner"></div>
 </section>
-<section class="video-grid">
-  <div class="vg-wrapper">
 
-    <div class="vg-track">
-      <div class="vg-item">
+<!-- ─── VIDEO SWIPER ─── -->
+<section class="video-grid">
+  <div class="swiper videoSwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
         <video src="video1.mp4" autoplay muted loop playsinline></video>
       </div>
-      <div class="vg-item">
+      <div class="swiper-slide">
         <video src="video2.mp4" autoplay muted loop playsinline></video>
       </div>
-      <div class="vg-item">
-        <video src="video6.mp4" autoplay muted loop playsinline></video>
+      <div class="swiper-slide">
+        <video src="video3.mp4" autoplay muted loop playsinline></video>
       </div>
-      <div class="vg-item">
+      <div class="swiper-slide">
         <video src="video4.mp4" autoplay muted loop playsinline></video>
       </div>
+      <div class="swiper-slide">
+        <video src="video5.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="swiper-slide">
+        <video src="video6.mp4" autoplay muted loop playsinline></video>
+      </div>
+
     </div>
 
+    <!-- Navigation -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
+<!-- BUTTONS -->
+<div class="nyc-btn">
+  <button type="button" class="btn-click">
+    <a href="./sachin-reusme.jpg/" download="sachin-Resume" role="button">My Resume</a>
+  </button>
+  <button type="button" class="btn-click">
+    <a href="https://wa.me/919877512387" target="_blank" class="btn-click">DM me</a>
+  </button>
+</div>
 
-  <div class="nyc-btn">
-    <button type="button" class="btn-click" > 
-      <a href="./sachin-reusme.jpg/" download="sachin-Resume" role="button">
-        My Resume
-        </a/>
-    </button>
-    <button type="button" class="btn-click"> 
-      <a href="https://wa.me/919877512387" target="_blank" class="btn-click">
-        DM me
-      </a>
-    </button>
-  </div>
-
+<!-- CONTACT -->
 <section class="contact-section">
   <div class="cs-container">
-
     <div class="cs-left">
-      <h2>Let’s have a word?</h2>
+      <h2>Let's have a word?</h2>
       <p>
         Got an idea, design challenge, or opportunity?<br>
-        I’m all ears and ready to make it happen
+        I'm all ears and ready to make it happen
       </p>
     </div>
-
     <div class="cs-right">
       <a href="#" class="cs-icon">✉️</a>
       <a href="https://www.instagram.com/smilemr.sachin/" class="cs-icon">in</a>
@@ -427,31 +321,70 @@ body.dark .typewriter {
       <a href="https://www.threads.com/@smilemr.sachin?xmt=AQF0FqGZRt255sDzpt58UmdHFo4M0rVOsXwqd8s_NGFAreM" class="cs-icon">◎</a>
       <a href="https://www.facebook.com/people/Sachin-Kumar/pfbid0r3oSLunMTNd7ZJKkqsfMbxn6CyWupBrcTniWnpmdEbEQK8qSV9Fd77gS4Qd6a4fil/?ref=NONE_ig_profile_ac" class="cs-icon">●</a>
     </div>
-
   </div>
-
   <div class="cs-bottom">
     <p>Designed by <span>Sachin</span></p>
     <p>© 2026. All rights reserved</p>
   </div>
-   </div>
 </section>
 
-<script>
- document.querySelectorAll("video").forEach(video => {
-  video.play().catch(() => {});
-});
-</script>
-<script>
-const toggle = document.getElementById("themeToggle");
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-});
+<script>
+  // ─── INIT SWIPER ───
+  const swiper = new Swiper('.videoSwiper', {
+    loop: true,
+    grabCursor: true,
+    centeredSlides: true,
+    spaceBetween: 20,
+
+    // Show peek of next/prev slides
+    breakpoints: {
+      0: {
+        slidesPerView: 1.15,
+        spaceBetween: 12,
+      },
+      600: {
+        slidesPerView: 2.2,
+        spaceBetween: 16,
+      },
+      1024: {
+        slidesPerView: 3.2,
+        spaceBetween: 20,
+      },
+      1400: {
+        slidesPerView: 3.8,
+        spaceBetween: 24,
+      }
+    },
+
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+  });
+
+  // ─── PLAY VIDEOS ───
+  document.querySelectorAll("video").forEach(v => v.play().catch(() => {}));
+
+  // ─── DARK MODE ───
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>
